@@ -1,4 +1,4 @@
-package com.shashank.sneha.initialization;
+package com.shashank.initialization;
 
 import org.openqa.selenium.WebDriver;
 

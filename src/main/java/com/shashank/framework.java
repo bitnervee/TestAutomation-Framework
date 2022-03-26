@@ -1,4 +1,4 @@
-package com.shashank.sneha;
+package com.shashank;
 
 public class framework {
 }
