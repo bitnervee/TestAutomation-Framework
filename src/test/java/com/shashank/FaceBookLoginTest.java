@@ -1,23 +1,18 @@
 package com.shashank;
 
-import com.shashank.sneha.initialization.BrowserFactory;
-import com.shashank.sneha.initialization.PageDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.shashank.initialization.BrowserFactory;
+import com.shashank.initialization.PageDriver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class FaceBookLoginTest {
+public class FaceBookLoginTest extends BrowserFactory{
 
     WebDriver wait ;
     WebDriver driver;
 
     @Test
     public void testRun() throws InterruptedException {
-        WebDriver driver = PageDriver.getDriver();
+        driver = PageDriver.getDriver();
         System.out.println(driver);
         //wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.get("https://www.facebook.com");
