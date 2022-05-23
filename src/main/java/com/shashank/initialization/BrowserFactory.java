@@ -8,15 +8,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 public class BrowserFactory{
 
     public static final Logger logger = LoggerFactory.getLogger(BrowserFactory.class);
 
     WebDriver driver = null;
-    @BeforeClass
     public void setUp(){
         String browser = System.getProperty("browser","safari");
         logger.debug("Selecting selenium browser using" );
@@ -38,9 +35,6 @@ public class BrowserFactory{
         PageDriver.setDriver(driver);
     }
 
-
-
-    @AfterClass
     public void tearDown(){
         PageDriver.getDriver().quit();
     }
