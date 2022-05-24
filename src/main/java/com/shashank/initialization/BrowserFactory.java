@@ -37,6 +37,5 @@ public class BrowserFactory{
 
     public void tearDown(){
         PageDriver.getDriver().quit();
-        PageDriver.removeDriver();
     }
 }
