@@ -13,4 +13,9 @@ public final class PageDriver {
     public static void setDriver(WebDriver driver){
         webDriver.set(driver);
     }
+
+    public static void removeDriver() {
+        webDriver.remove();
+    }
+
 }
