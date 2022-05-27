@@ -11,6 +11,7 @@ import org.testng.ITestResult;
 public class GuardListening implements ITestListener {
 
     private final BrowserFactory browserFactory = new BrowserFactory();
+    private static final LogMe log = new LogMe(GuardListening.class.getName());
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -18,35 +19,36 @@ public class GuardListening implements ITestListener {
         NeedWeb needWeb = m.getConstructorOrMethod().getMethod()
             .getAnnotation(NeedWeb.class);
         String browserToSpawn = needWeb.browserType();
-        LogMe.info(String.format("Invoking the %s Browser", browserToSpawn));
+        log.info(String.format("Invoking the %s Browser", browserToSpawn));
         browserFactory.setUp(browserToSpawn);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
-        LogMe.info(String.format("Test [%s] Passed !", result.getTestName()));
+        System.out.println("Here in the code");
+        log.info(String.format("Test [%s] Passed !", result.getTestName()));
         browserFactory.tearDown();
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
-        LogMe.warn(String.format("Test [%s] Failed !", result.getTestName()));
+        log.warn(String.format("Test [%s] Failed !", result.getTestName()));
         browserFactory.tearDown();
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         ITestListener.super.onTestSkipped(result);
-        LogMe.info(String.format("Test [%s] Skipped !", result.getTestName()));
+        log.info(String.format("Test [%s] Skipped !", result.getTestName()));
         browserFactory.tearDown();
     }
 
     @Override
     public void onFinish(ITestContext context) {
         ITestListener.super.onFinish(context);
-        LogMe.info("Execution Finished !");
+        log.info("Execution Finished !");
         browserFactory.tearDown();
     }
 }
