@@ -32,6 +32,7 @@ public class BrowserFactory{
                 driver = new EdgeDriver();
             }
             PageDriver.setDriver(driver);
+            driver.manage().window().maximize();
         }
     }
 
