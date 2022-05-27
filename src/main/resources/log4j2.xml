@@ -6,10 +6,10 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.shashank" level="trace">
+        <Logger name="com.shashank" level="info">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
