@@ -7,22 +7,22 @@ import org.testng.annotations.Test;
 
 public class FaceBookLoginTest {
 
-    @Test
+    /*@Test
     @NeedWeb(browserType = "safari")
     public void testRunOnChrome() throws InterruptedException {
         WebDriver driver = PageDriver.getDriver();
         System.out.println(driver);
         driver.get("https://www.facebook.com");
         Thread.sleep(6000);
-    }
+    }*/
 
-    /*@Test
+    @Test
     @NeedWeb(browserType = "edge")
     public void testRunOnEdge() throws InterruptedException {
         WebDriver driver = PageDriver.getDriver();
         System.out.println(driver);
         driver.get("https://www.facebook.com");
         Thread.sleep(6000);
-    }*/
+    }
 
 }
