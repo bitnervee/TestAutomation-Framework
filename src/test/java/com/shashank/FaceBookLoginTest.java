@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class FaceBookLoginTest {
 
   @Test
-  @NeedWeb(browserType = "safari")
+  @NeedWeb(browserType = "chrome")
   public void testRunOnChrome() throws InterruptedException {
     WebDriver driver = PageDriver.getDriver();
     System.out.println(driver);
@@ -16,7 +16,7 @@ public class FaceBookLoginTest {
     Thread.sleep(6000);
   }
 
-  @Test
+  @Test(enabled = false)
   @NeedWeb(browserType = "edge")
   public void testRunOnEdge() throws InterruptedException {
     WebDriver driver = PageDriver.getDriver();
