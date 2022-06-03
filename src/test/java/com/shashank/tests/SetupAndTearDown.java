@@ -1,4 +1,4 @@
-package com.shashank;
+package com.shashank.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterMethod;

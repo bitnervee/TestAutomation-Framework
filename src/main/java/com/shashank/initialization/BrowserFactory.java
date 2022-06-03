@@ -44,6 +44,7 @@ public class BrowserFactory {
     if (Objects.isNull(PageDriver.getDriver())) {
       WebDriver driver = MAP.get(browserType).get();
       PageDriver.setDriver(driver);
+      PageDriver.getDriver().manage().window().maximize();
       log.info("---------------------WEB DRIVER SET UP DONE---------------------");
     } else {
       log.error("---------------------ERROR SETTING UP WEB DRIVER---------------------");
