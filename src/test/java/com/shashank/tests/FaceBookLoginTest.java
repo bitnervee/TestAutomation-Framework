@@ -1,4 +1,4 @@
-package com.shashank;
+package com.shashank.tests;
 
 import com.shashank.annotations.NeedWeb;
 import com.shashank.initialization.PageDriver;
