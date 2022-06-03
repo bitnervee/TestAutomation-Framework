@@ -43,7 +43,7 @@ public class BrowserFactory {
     log.info("---------------------SETTING UP WEB DRIVER---------------------");
     if (Objects.isNull(PageDriver.getDriver())) {
       WebDriver driver = MAP.get(browserType).get();
-      PageDriver.setDriver(driver);
+      PageDriver.getInstance().setDriver(driver);
       PageDriver.getDriver().manage().window().maximize();
       log.info("---------------------WEB DRIVER SET UP DONE---------------------");
     } else {
@@ -54,7 +54,7 @@ public class BrowserFactory {
   public void tearDown() {
     if (Objects.nonNull(PageDriver.getDriver())) {
       PageDriver.getDriver().quit();
-      PageDriver.removeDriver();
+      PageDriver.getInstance().removeDriver();
       log.info("---------------------QUITTING WEB DRIVER---------------------");
     }
   }
