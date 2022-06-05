@@ -15,6 +15,7 @@
   </properties>
 
   <dependencies>
+
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
       <groupId>org.testng</groupId>
@@ -36,6 +37,7 @@
       <artifactId>selenium-java</artifactId>
       <version>3.141.59</version>
     </dependency>
+
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
@@ -47,12 +49,20 @@
       <artifactId>log4j-core</artifactId>
       <version>${apache.log4j.version}</version>
     </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
       <version>${apache.log4j.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
+    <dependency>
+      <groupId>org.aeonbits.owner</groupId>
+      <artifactId>owner</artifactId>
+      <version>1.0.4</version>
     </dependency>
 
   </dependencies>

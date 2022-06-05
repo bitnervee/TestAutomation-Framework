@@ -1,4 +1,4 @@
-package com.shashank.tests;
+package com.shashank.tests.regression;
 
 import com.shashank.annotations.NeedWeb;
 import com.shashank.initialization.PageDriver;
