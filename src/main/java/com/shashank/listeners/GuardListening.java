@@ -1,8 +1,11 @@
 package com.shashank.listeners;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.shashank.annotations.NeedWeb;
 import com.shashank.framework.LogMe;
 import com.shashank.initialization.BrowserFactory;
+import com.shashank.reporting.ExtentManager;
+import com.shashank.reporting.ExtentReport;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestNGMethod;
@@ -21,6 +24,8 @@ public class GuardListening implements ITestListener {
 
   @Override
   public void onTestStart(ITestResult result) {
+    ExtentTest test = ExtentManager.getInstance().createTest(result.getName());
+    ExtentReport.setTest(test);
     ITestNGMethod m = result.getMethod();
     NeedWeb needWeb = m.getConstructorOrMethod().getMethod()
         .getAnnotation(NeedWeb.class);
@@ -54,6 +59,7 @@ public class GuardListening implements ITestListener {
   public void onFinish(ITestContext context) {
     ITestListener.super.onFinish(context);
     browserFactory.tearDown();
+    ExtentManager.getInstance().flush();
     log.info("---------------------FINISHED---------------------");
   }
 }

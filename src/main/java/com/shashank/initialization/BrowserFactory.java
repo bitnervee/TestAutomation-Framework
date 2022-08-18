@@ -13,23 +13,29 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowserFactory {
+
   private static final LogMe log = new LogMe(BrowserFactory.class.getSimpleName());
+  
   private static final Supplier<WebDriver> CHROME_SUPPLIER = () -> {
     WebDriverManager.chromedriver().setup();
     return new ChromeDriver();
   };
+
   private static final Supplier<WebDriver> FIREFOX_SUPPLIER = () -> {
     WebDriverManager.firefoxdriver().setup();
     return new FirefoxDriver();
   };
+
   private static final Supplier<WebDriver> EDGE_SUPPLIER = () -> {
     WebDriverManager.edgedriver().setup();
     return new EdgeDriver();
   };
+
   private static final Supplier<WebDriver> SAFARI_SUPPLIER = () -> {
     WebDriverManager.safaridriver().setup();
     return new SafariDriver();
   };
+
   private static final Map<String, Supplier<WebDriver>> MAP = new HashMap<>();
 
   static {
@@ -58,4 +64,6 @@ public class BrowserFactory {
       log.info("---------------------QUITTING WEB DRIVER---------------------");
     }
   }
+
+
 }
