@@ -1,7 +1,9 @@
 package com.shashank.listeners;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.shashank.annotations.NeedWeb;
+import com.shashank.annotations.Scenario;
 import com.shashank.framework.LogMe;
 import com.shashank.initialization.BrowserFactory;
 import com.shashank.reporting.ExtentManager;
@@ -24,28 +26,36 @@ public class GuardListening implements ITestListener {
 
   @Override
   public void onTestStart(ITestResult result) {
-    ExtentTest test = ExtentManager.getInstance().createTest(result.getName());
-    ExtentReport.setTest(test);
-    ITestNGMethod m = result.getMethod();
-    NeedWeb needWeb = m.getConstructorOrMethod().getMethod()
-        .getAnnotation(NeedWeb.class);
-    String browserToSpawn = needWeb.browserType();
-    browserFactory.setUp(browserToSpawn);
-    log.info(String.format("Starting execution for test method [%s] !", result.getName()));
+      ExtentTest test = ExtentManager.getInstance().createTest(result.getName());
+      ExtentReport.setTest(test);
+      Class<?> clazz = result.getMethod().getRealClass();
+      String tester = clazz.getAnnotation(Scenario.class).tester();
+      String id = clazz.getAnnotation(Scenario.class).id();
+      String module = clazz.getAnnotation(Scenario.class).module();
+      ExtentReport.getTest().assignAuthor(tester);
+      ExtentReport.getTest().assignCategory(module);
+      ITestNGMethod m = result.getMethod();
+      NeedWeb needWeb = m.getConstructorOrMethod().getMethod()
+              .getAnnotation(NeedWeb.class);
+      String browserToSpawn = needWeb.browserType();
+      browserFactory.setUp(browserToSpawn);
+      log.info(String.format("Starting execution for test method [%s] !", result.getName()));
   }
 
   @Override
   public void onTestSuccess(ITestResult result) {
-    ITestListener.super.onTestSuccess(result);
-    log.info(String.format("Test [%s] Passed !", result.getName()));
+      ITestListener.super.onTestSuccess(result);
+      ExtentReport.getTest().log(Status.PASS, String.format("Test [%s] Passed !", result.getName()));
+      log.info(String.format("Test [%s] Passed !", result.getName()));
     browserFactory.tearDown();
   }
 
   @Override
   public void onTestFailure(ITestResult result) {
-    ITestListener.super.onTestFailure(result);
-    log.error(String.format("Test [%s] Failed !", result.getName()));
-    browserFactory.tearDown();
+      ITestListener.super.onTestFailure(result);
+      ExtentReport.getTest().log(Status.FAIL, String.format("Test [%s] Failed !", result.getName()));
+      log.error(String.format("Test [%s] Failed !", result.getName()));
+      browserFactory.tearDown();
   }
 
   @Override
