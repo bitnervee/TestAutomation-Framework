@@ -9,11 +9,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Scenario {
 
-    String tester();
+  String tester() default "Shashank Shekhar";
 
-    String module();
+  String module() default "Payment Module";
 
-    String id();
+  String id() default "";
 
-    String description();
+  String description() default "Testing Project";
 }

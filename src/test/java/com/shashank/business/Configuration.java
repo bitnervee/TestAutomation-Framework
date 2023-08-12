@@ -6,6 +6,8 @@ import org.aeonbits.owner.ConfigFactory;
 public final class Configuration {
 
   public static Configuration instance = null;
+  private final PropertyFileReader propertyFileReader = ConfigFactory.create(
+      PropertyFileReader.class);
 
   private Configuration() {
 
@@ -17,9 +19,6 @@ public final class Configuration {
     }
     return instance;
   }
-
-  private final PropertyFileReader propertyFileReader = ConfigFactory.create(
-      PropertyFileReader.class);
 
   public int getLeastWait() {
     return propertyFileReader.leastwait();
