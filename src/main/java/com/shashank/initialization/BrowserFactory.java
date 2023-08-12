@@ -10,12 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowserFactory {
 
   private static final LogMe log = new LogMe(BrowserFactory.class.getSimpleName());
-  
+
   private static final Supplier<WebDriver> CHROME_SUPPLIER = () -> {
     WebDriverManager.chromedriver().setup();
     return new ChromeDriver();
@@ -49,7 +50,7 @@ public class BrowserFactory {
     log.info("---------------------SETTING UP WEB DRIVER---------------------");
     if (Objects.isNull(PageDriver.getDriver())) {
       WebDriver driver = MAP.get(browserType).get();
-      PageDriver.getInstance().setDriver(driver);
+      PageDriver.getInstance().setDriver((RemoteWebDriver) driver);
       PageDriver.getDriver().manage().window().maximize();
       log.info("---------------------WEB DRIVER SET UP DONE---------------------");
     } else {

@@ -9,19 +9,19 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage {
 
-    public WebDriver driver;
+  public WebDriver driver;
 
-    @FindBy(xpath = "//span[contains(text(),'Products')]")
-    public WebElement productPage;
+  @FindBy(xpath = "//span[contains(text(),'Products')]")
+  public WebElement productPage;
 
-    public ProductPage(){
-        driver = PageDriver.getDriver();
-        PageFactory.initElements(driver,this);
-    }
+  public ProductPage() {
+    driver = PageDriver.getDriver();
+    PageFactory.initElements(driver, this);
+  }
 
-    public void verifyProductPageDisplayed(){
-        UserActions userActions = new UserActions();
-        userActions.sleep(5);
-        productPage.isDisplayed();
-    }
+  public void verifyProductPageDisplayed() {
+    UserActions userActions = new UserActions();
+    userActions.sleep(5);
+    productPage.isDisplayed();
+  }
 }
